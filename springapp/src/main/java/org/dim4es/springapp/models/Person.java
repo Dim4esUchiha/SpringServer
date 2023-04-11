@@ -1,5 +1,8 @@
 package org.dim4es.springapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -27,6 +30,12 @@ public class Person {
     @Column(name = "age")
     @Min(value = 0, message = "Name should be greater than 0")
     private int age;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnore
+    private User user;
+
 
     public Person() {
     }
@@ -67,6 +76,14 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 

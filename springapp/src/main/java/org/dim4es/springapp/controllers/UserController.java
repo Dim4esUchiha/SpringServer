@@ -55,6 +55,11 @@ public class UserController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    @GetMapping("/{id}/info")
+    public User getUserInfo(@PathVariable("id") int id){
+        return userService.findById(id);
+    }
+
 
     @ExceptionHandler
     private ResponseEntity<UserErrorResponse> handleException(UserNotFoundException e){

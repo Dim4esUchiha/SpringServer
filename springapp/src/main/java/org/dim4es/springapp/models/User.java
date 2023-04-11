@@ -1,5 +1,8 @@
 package org.dim4es.springapp.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -31,6 +34,10 @@ public class User {
 
     @Column(name = "last_location")
     private String lastLocation;
+
+    @OneToOne(mappedBy = "user")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    private Person person;
 
     public User() {
     }
@@ -79,5 +86,13 @@ public class User {
 
     public void setLastLocation(String lastLocation) {
         this.lastLocation = lastLocation;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }
