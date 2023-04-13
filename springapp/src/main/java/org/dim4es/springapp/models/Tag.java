@@ -40,4 +40,12 @@ public class Tag {
     public void setTagName(String tagName) {
         this.tagName = tagName;
     }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
 }
