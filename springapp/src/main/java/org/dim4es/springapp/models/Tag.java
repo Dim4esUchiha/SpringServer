@@ -1,6 +1,9 @@
 package org.dim4es.springapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +18,7 @@ public class Tag {
     private String tagName;
 
     @ManyToMany(mappedBy = "tags")
+    @JsonIgnore
     private List<Person> persons;
 
 
@@ -23,6 +27,13 @@ public class Tag {
 
     public Tag(String tagName) {
         this.tagName = tagName;
+    }
+
+    public void addPerson(Person person){
+        if(this.persons == null){
+            this.persons = new ArrayList<>();
+        }
+        this.persons.add(person);
     }
 
     public int getId() {

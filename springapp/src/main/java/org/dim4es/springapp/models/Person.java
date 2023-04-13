@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -53,6 +54,13 @@ public class Person {
         this.name = name;
         this.surName = surName;
         this.age = age;
+    }
+
+    public void addTag(Tag tag){
+        if(this.tags == null){
+            this.tags = new ArrayList<>();
+        }
+        this.tags.add(tag);
     }
 
     public int getId() {

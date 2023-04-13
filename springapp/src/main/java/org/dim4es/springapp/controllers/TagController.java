@@ -23,10 +23,10 @@ public class TagController {
         return tagService.findAll();
     }
 
-    @PostMapping("/{id}")
-    public void create(@RequestBody Tag tag,
-                       @PathVariable("id") int id){
-
+    @PostMapping("/{id}_{tag_name}")
+    public void addTagToPerson(@PathVariable("id") int id,
+                               @PathVariable("tag_name") String tag){
+        tagService.addTagToPerson(tag, id);
     }
 
     @PostMapping
