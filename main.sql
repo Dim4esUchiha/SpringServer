@@ -19,8 +19,18 @@ create table `Person`(
 );
 
 insert into person(name, surname, age, user_id) values('Dmitry', 'Orlov', 22, 1);
-
 insert into user(email, nickname, password) values('dimas_orlov99@mail.ru', 'dim4eSS', 'QwertY_123');
+
+select * from user;
+select * from person;
+
+delete from person where id=4;
+
+
+insert into user(email, nickname, password) values('maxim@mail.ru', 'Maxim', 'Shadow_Fiend');
+
+
+
 
 
  
