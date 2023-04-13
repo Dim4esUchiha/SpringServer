@@ -55,12 +55,6 @@ public class UserController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/{id}/info")
-    public User getUserInfo(@PathVariable("id") int id){
-        return userService.findById(id);
-    }
-
-
     @ExceptionHandler
     private ResponseEntity<UserErrorResponse> handleException(UserNotFoundException e){
         UserErrorResponse response = new UserErrorResponse(
@@ -71,7 +65,7 @@ public class UserController {
     }
 
     @ExceptionHandler
-    private ResponseEntity<UserErrorResponse> handleExceprion(UserNotCreatedException e){
+    private ResponseEntity<UserErrorResponse> handleException(UserNotCreatedException e){
         UserErrorResponse response = new UserErrorResponse(
                 e.getMessage() + " :( ",
                 System.currentTimeMillis()

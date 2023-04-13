@@ -40,9 +40,10 @@ public class PersonController {
         return personService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("/{id}")
     public ResponseEntity<HttpStatus> create(@RequestBody @Valid Person person,
-                                             BindingResult bindingResult){
+                                             BindingResult bindingResult,
+                                             @PathVariable("id") int id){
         if(bindingResult.hasErrors()){
             StringBuilder errorMsg = new StringBuilder();
             List<FieldError> errors = bindingResult.getFieldErrors();
@@ -54,7 +55,7 @@ public class PersonController {
             throw new PersonNotCreatedException(errorMsg.toString());
         }
 
-        personService.save(person);
+        personService.save(person, id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
