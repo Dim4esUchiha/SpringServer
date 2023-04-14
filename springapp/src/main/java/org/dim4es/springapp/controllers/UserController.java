@@ -1,5 +1,6 @@
 package org.dim4es.springapp.controllers;
 
+import org.dim4es.springapp.dto.UserDTO;
 import org.dim4es.springapp.models.User;
 import org.dim4es.springapp.services.UserService;
 import org.dim4es.springapp.util.UserExceptions.UserErrorResponse;
@@ -38,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<HttpStatus> create(@RequestBody @Valid User user,
+    public ResponseEntity<HttpStatus> create(@RequestBody @Valid UserDTO userDTO,
                                              BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             StringBuilder errorMsg = new StringBuilder();
@@ -51,8 +52,18 @@ public class UserController {
             throw new UserNotCreatedException(errorMsg.toString());
         }
 
-        userService.save(user);
+        userService.save(convertToUser(userDTO));
         return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    private User convertToUser(UserDTO userDTO){
+        User user = new User();
+
+        user.setNickname(userDTO.getNickname());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getPassword());
+
+        return user;
     }
 
     @ExceptionHandler

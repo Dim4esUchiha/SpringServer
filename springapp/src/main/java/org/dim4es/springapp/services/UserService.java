@@ -33,7 +33,14 @@ public class UserService {
 
     @Transactional
     public void save(User user){
+        enrichUser(user);
         userRepository.save(user);
+    }
+
+
+    private void enrichUser(User user){
+        user.setLastLocation("MINSK");
+        user.setPerson(null);
     }
 
 }
