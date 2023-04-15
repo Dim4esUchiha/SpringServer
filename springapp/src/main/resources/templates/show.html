@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+    <p th:text="${user_info.getId()}">VALUE</p>
+    <p th:text="${user_info.getPerson().getName()}">VALUE</p>
+    <p th:text="${user_info.getPerson().getSurName()}">VALUE</p>
+    <p th:text="${user_info.getPerson().getAge()}">VALUE</p>
+    <a href='/user'><button>Back</button></a>
+</body>
+</html>

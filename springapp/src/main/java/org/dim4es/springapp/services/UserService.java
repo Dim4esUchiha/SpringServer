@@ -1,6 +1,7 @@
 package org.dim4es.springapp.services;
 
 
+import org.dim4es.springapp.models.Person;
 import org.dim4es.springapp.models.User;
 import org.dim4es.springapp.repositories.UserRepository;
 import org.dim4es.springapp.util.UserExceptions.UserNotFoundException;
@@ -35,6 +36,11 @@ public class UserService {
     public void save(User user){
         enrichUser(user);
         userRepository.save(user);
+    }
+
+    public Person getPersonInfo(int id){
+        Person person = findById(id).getPerson();
+        return person;
     }
 
 

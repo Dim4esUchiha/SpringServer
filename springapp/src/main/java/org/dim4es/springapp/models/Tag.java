@@ -21,7 +21,6 @@ public class Tag {
     @JsonIgnore
     private List<Person> persons;
 
-
     public Tag() {
     }
 
@@ -58,5 +57,13 @@ public class Tag {
 
     public void setPersons(List<Person> persons) {
         this.persons = persons;
+    }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "id=" + id +
+                ", tagName='" + tagName + '\'' +
+                '}';
     }
 }

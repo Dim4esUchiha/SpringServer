@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tags</title>
+</head>
+<body>
+<form action="#" th:action="@{{/user/} + ${user_id} + ${/tags}}" th:object="${user_name_tags}" method="get">
+    <p th:text="${user_name_tags.getNickname()}">VALUE</p>
+</form>
+
+<form action="#" th:action="@{{/user/} + ${user_id} + ${/tags}}" th:object="${person_tags}" method="get">
+    <p th:text="${person_tags.getName()}">VALUE</p>
+</form>
+<!--<form action="#" th:action="@{{/user/} + ${user_id} + ${/tags}}" th:object="${person_tags_info}" method="get">-->
+<!--    <div th:each="var : ${person_tags_info}">-->
+<!--        <span th:text="${var.tagName}"></span>-->
+<!--        <p><input type="submit" value="Submit" />-->
+<!--    </div>-->
+<!--</form>-->
+
+<form action="#" th:action="@{{/user/} + ${user_id} + ${/tags}}" th:object="${delete_tag}" method="post">
+    <div th:each="var : ${person_tags_info}">
+        <span th:text="${var.tagName}"></span>
+        <input type="submit" value="Delete" />
+    </div>
+</form>
+</body>
+</html>

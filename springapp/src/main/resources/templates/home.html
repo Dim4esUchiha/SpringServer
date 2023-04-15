@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> nickname </th>
+        <th> email </th>
+        <th> password </th>
+        <th> info </th>
+        <th> Tags </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user_var : ${users}">
+        <td><span th:text="${user_var.nickname}"> Nickname </span></td>
+        <td><span th:text="${user_var.email}"> Email </span></td>
+        <td><span th:text="${user_var.password}"> Password </span></td>
+        <td><a th:href="@{/user/{id}(id=${user_var.getId()})}">Edit Info</a> </td>
+        <td><a th:href="@{/user/{id}/tags(id=${user_var.getId()})}">Tags</a></td>
+    </tr>
+    </tbody>
+
+</table>
+<a href='/create'><button>Create new user</button></a>
+</body>
+</html>
